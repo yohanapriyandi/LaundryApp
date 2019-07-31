@@ -4,7 +4,7 @@ import store from './store.js'
 import App from './App.vue'
 
 new Vue({
-    el:"#laun",
+    el:"#dw",
     router,
     store,
     components: {
