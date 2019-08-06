@@ -11,8 +11,8 @@
 
                 <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><router-link to="/">Home <span class="sr-only">(current)</span></router-link></li>
-                        <li><a href="#">Link</a></li>
+                        <!-- <li class="active"><router-link to="/">Home <span class="sr-only">(current)</span></router-link></li> -->
+                        <!-- <li><a href="#">Link</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -24,7 +24,12 @@
                                 <li class="divider"></li>
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
-                        </li>
+                        </li> -->
+                    </ul>
+                    <!-- Navigasi menu untuk Outlets -->
+                    <ul class="nav navbar-nav">
+                        <li><router-link to="/"> HOME<span class="sr-only">( current )</span></router-link></li>
+                        <li><router-link :to="{ name: 'outlets.data' }">Outlets</router-link></li>
                     </ul>
                     <form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
@@ -79,7 +84,7 @@
                                 <li class="footer"><a href="#">View all</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown tasks-menu">
+                        <!-- <li class="dropdown tasks-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-flag-o"></i>
                                 <span class="label label-danger">9</span>
@@ -107,7 +112,7 @@
                                     <a href="#">View all tasks</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="https://via.placeholder.com/160" class="user-image" alt="User Image">
@@ -118,7 +123,7 @@
                                     <img src="https://via.placeholder.com/160" class="img-circle" alt="User Image">
                                     <p>Alexander Pierce - Web Developer <small>Member since Nov. 2012</small></p>
                                 </li>
-                                <li class="user-body">
+                                <!-- <li class="user-body">
                                     <div class="row">
                                         <div class="col-xs-4 text-center">
                                             <a href="#">Followers</a>
@@ -130,7 +135,7 @@
                                             <a href="#">Friends</a>
                                         </div>
                                     </div>
-                                </li>
+                                </li> -->
                                 <li class="user-footer">
                                     <div class="pull-left">
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
