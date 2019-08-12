@@ -2266,7 +2266,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2332,7 +2331,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'EditOutlet',
   created: function created() {
-    this.editOutlet(this.$route.param.id);
+    this.editOutlet(this.$route.params.id);
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('outlet', ['editOutlet', 'updateOutlet']), {
     submit: function submit() {
@@ -2368,6 +2367,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
 //
 //
 //
@@ -2525,7 +2526,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         label: 'Alamat'
       }, {
         key: 'phone',
-        label: 'Telpon'
+        label: 'Telp'
       }, {
         key: 'status',
         label: 'Status'
@@ -2533,7 +2534,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         key: 'actions',
         label: 'Aksi'
       }],
-      // Untuk pencarian data
       search: ''
     };
   },
@@ -2564,13 +2564,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       this.$swal({
-        title: ' Are You Sure ?',
-        text: 'This acions will be delete permanently',
+        title: 'Kamu Yakin?',
+        text: "Tindakan ini akan menghapus secara permanent!",
         type: 'warning',
-        showCancelButton: 'true',
+        showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yeah, next!!!'
+        confirmButtonText: 'Iya, Lanjutkan!'
       }).then(function (result) {
         if (result.value) {
           _this.removeOutlet(id);
@@ -37590,7 +37590,7 @@ var render = function() {
               },
               [
                 _c("i", { staticClass: "fa fa-save" }),
-                _vm._v("  Add New\n                ")
+                _vm._v(" Add New\n                ")
               ]
             )
           ])
@@ -37606,7 +37606,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "panel-heading" }, [
-      _c("h3", { staticClass: "panel-title" }, [_vm._v(" Add New Outlet")])
+      _c("h3", { staticClass: "panel-title" }, [_vm._v("Add New Outlet")])
     ])
   }
 ]
@@ -37640,7 +37640,7 @@ var render = function() {
         { staticClass: "panel-body" },
         [
           _c("outlet-form"),
-          _vm._v(">\n            "),
+          _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c(
               "button",
@@ -37701,7 +37701,7 @@ var render = function() {
       "div",
       { staticClass: "form-group", class: { "has-error": _vm.errors.code } },
       [
-        _c("label", { attrs: { for: "" } }, [_vm._v(" Kode Outlet ")]),
+        _c("label", { attrs: { for: "" } }, [_vm._v("Kode Outlet")]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -37727,7 +37727,7 @@ var render = function() {
         _vm._v(" "),
         _vm.errors.code
           ? _c("p", { staticClass: "text-danger" }, [
-              _vm._v(" " + _vm._s(_vm.errors.code[0]) + " ")
+              _vm._v(_vm._s(_vm.errors.code[0]))
             ])
           : _vm._e()
       ]
@@ -37737,7 +37737,7 @@ var render = function() {
       "div",
       { staticClass: "form-group", class: { "has-error": _vm.errors.name } },
       [
-        _c("label", { attrs: { for: "" } }, [_vm._v(" Nama Outlet ")]),
+        _c("label", { attrs: { for: "" } }, [_vm._v("Nama Outlet")]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -37763,7 +37763,7 @@ var render = function() {
         _vm._v(" "),
         _vm.errors.name
           ? _c("p", { staticClass: "text-danger" }, [
-              _vm._v("  " + _vm._s(_vm.errors.name[0]) + " ")
+              _vm._v(_vm._s(_vm.errors.name[0]))
             ])
           : _vm._e()
       ]
@@ -37773,7 +37773,7 @@ var render = function() {
       "div",
       { staticClass: "form-group", class: { "has-error": _vm.errors.address } },
       [
-        _c("label", { attrs: { for: "" } }, [_vm._v(" Alamat ")]),
+        _c("label", { attrs: { for: "" } }, [_vm._v("Alamat")]),
         _vm._v(" "),
         _c("textarea", {
           directives: [
@@ -37799,7 +37799,7 @@ var render = function() {
         _vm._v(" "),
         _vm.errors.address
           ? _c("p", { staticClass: "text-danger" }, [
-              _vm._v("  " + _vm._s(_vm.errors.address[0]) + " ")
+              _vm._v(_vm._s(_vm.errors.address[0]))
             ])
           : _vm._e()
       ]
@@ -37809,7 +37809,7 @@ var render = function() {
       "div",
       { staticClass: "form-group", class: { "has-error": _vm.errors.phone } },
       [
-        _c("label", { attrs: { for: "" } }, [_vm._v(" No. Telpon ")]),
+        _c("label", { attrs: { for: "" } }, [_vm._v("No Telp")]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -37835,54 +37835,55 @@ var render = function() {
         _vm._v(" "),
         _vm.errors.phone
           ? _c("p", { staticClass: "text-danger" }, [
-              _vm._v("  " + _vm._s(_vm.errors.phone[0]) + " ")
+              _vm._v(_vm._s(_vm.errors.phone[0]))
             ])
           : _vm._e()
       ]
     ),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.outlet.status,
-            expression: "outlet.status"
-          }
-        ],
-        attrs: { type: "checkbox" },
-        domProps: {
-          checked: Array.isArray(_vm.outlet.status)
-            ? _vm._i(_vm.outlet.status, null) > -1
-            : _vm.outlet.status
-        },
-        on: {
-          change: function($event) {
-            var $$a = _vm.outlet.status,
-              $$el = $event.target,
-              $$c = $$el.checked ? true : false
-            if (Array.isArray($$a)) {
-              var $$v = null,
-                $$i = _vm._i($$a, $$v)
-              if ($$el.checked) {
-                $$i < 0 && _vm.$set(_vm.outlet, "status", $$a.concat([$$v]))
+      _c("label", { attrs: { for: "" } }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.outlet.status,
+              expression: "outlet.status"
+            }
+          ],
+          attrs: { type: "checkbox" },
+          domProps: {
+            checked: Array.isArray(_vm.outlet.status)
+              ? _vm._i(_vm.outlet.status, null) > -1
+              : _vm.outlet.status
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.outlet.status,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = null,
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && _vm.$set(_vm.outlet, "status", $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    _vm.$set(
+                      _vm.outlet,
+                      "status",
+                      $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                    )
+                }
               } else {
-                $$i > -1 &&
-                  _vm.$set(
-                    _vm.outlet,
-                    "status",
-                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                  )
+                _vm.$set(_vm.outlet, "status", $$c)
               }
-            } else {
-              _vm.$set(_vm.outlet, "status", $$c)
             }
           }
-        }
-      }),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "" } }, [_vm._v(" Set Active")])
+        }),
+        _vm._v("\n            Set Active\n        ")
+      ])
     ])
   ])
 }
@@ -37959,7 +37960,7 @@ var render = function() {
               staticClass: "btn btn-primary btn-sm btn-flat",
               attrs: { to: { name: "outlets.add" } }
             },
-            [_vm._v(" Tambah")]
+            [_vm._v("Tambah")]
           ),
           _vm._v(" "),
           _c("div", { staticClass: "pull-right" }, [
@@ -38008,23 +38009,23 @@ var render = function() {
                 fn: function(row) {
                   return [
                     row.item.status == 1
-                      ? _c("span", { staticClass: "labe label-success" }, [
-                          _vm._v(" Active")
+                      ? _c("span", { staticClass: "label label-success" }, [
+                          _vm._v("Active")
                         ])
                       : _c("span", { staticClass: "label label-default" }, [
-                          _vm._v(" Inactive")
+                          _vm._v("Inactive")
                         ])
                   ]
                 }
               },
               {
-                key: "acions",
+                key: "actions",
                 fn: function(row) {
                   return [
                     _c(
                       "router-link",
                       {
-                        staticClass: "btn-warning btn-sm",
+                        staticClass: "btn btn-warning btn-sm text-center",
                         attrs: {
                           to: {
                             name: "outlets.edit",
@@ -38032,20 +38033,20 @@ var render = function() {
                           }
                         }
                       },
-                      [_c("i", { staticClass: "fa fa-pencil" })]
+                      [_vm._v("Edit")]
                     ),
                     _vm._v(" "),
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-danger btn-sm",
+                        staticClass: "btn btn-danger btn-sm text-center ",
                         on: {
                           click: function($event) {
                             return _vm.deleteOutlet(row.item.id)
                           }
                         }
                       },
-                      [_c("i", { staticClass: "fa fa-trash" })]
+                      [_vm._v("Delete")]
                     )
                   ]
                 }
@@ -54062,13 +54063,22 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store.js */ "./resources/js/store.js");
+
 
 var $axios = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   baseURL: '/api',
   headers: {
-    Authorization: localStorage.getItem('token') != 'null' ? 'Bearer ' + localStorage.getItem('token') : '',
+    // Authorization: localStorage.getItem('token') != 'null' ? 'Bearer ' + localStorage.getItem('token'):'',
     'Content-Type': 'application/json'
   }
+});
+$axios.interceptors.request.use(function (config) {
+  var token = _store_js__WEBPACK_IMPORTED_MODULE_1__["default"].state.token;
+  if (token) config.headers.Authorization = "Bearer ".concat(token);
+  return config;
+}, function (error) {
+  return Promise.reject(error);
 });
 /* harmony default export */ __webpack_exports__["default"] = ($axios);
 
@@ -55000,7 +55010,7 @@ var actions = {
           });
         } else {
           commit('SET_ERRORS', {
-            invalid: 'Email Atau Password Keliru'
+            invalid: 'Email/Password Salah'
           }, {
             root: true
           });
@@ -55060,15 +55070,8 @@ var mutations = {
     state.page = payload;
   },
   ASSIGN_FORM: function ASSIGN_FORM(state, payload) {
-    state.outlet = {
-      code: payload.code,
-      name: payload.name,
-      status: payload.status,
-      address: payload.address,
-      phone: payload.phone
-    };
+    state.outlet = payload;
   },
-  // reset state for empty
   CLEAR_FORM: function CLEAR_FORM(state) {
     state.outlet = {
       code: '',
@@ -55080,66 +55083,58 @@ var mutations = {
   }
 };
 var actions = {
-  // REQUEST DATA OUTLET DARI SERVER
   getOutlets: function getOutlets(_ref, payload) {
     var commit = _ref.commit,
         state = _ref.state;
-    // cek apakah payload atau tidak
     var search = typeof payload != 'undefined' ? payload : '';
     return new Promise(function (resolve, reject) {
-      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].get('/outlets?page=${state.page}&q=$(search)').then(function (response) {
-        // simpan data ke state melalui mutations
-        commmit('ASSIGN_DATA', response.data);
+      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].get("/outlets?page=".concat(state.page, "&q=").concat(search)).then(function (response) {
+        commit('ASSIGN_DATA', response.data);
         resolve(response.data);
       });
     });
   },
-  // FUNGSI UNTUK MENAMBAHKAN DATA BARU
   submitOutlet: function submitOutlet(_ref2) {
     var dispatch = _ref2.dispatch,
         commit = _ref2.commit,
         state = _ref2.state;
     return new Promise(function (resolve, reject) {
-      // mengirimkan data ke server dan melampirkan data yangakan disimpan dari state outlet
-      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].post('/outlets', state.outlet).then(function (response) {
+      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].post("/outlets", state.outlet).then(function (response) {
         dispatch('getOutlets').then(function () {
           resolve(response.data);
         });
       })["catch"](function (error) {
         if (error.response.status == 422) {
-          commit('SET_ERRORS', error.response.data.error, {
+          commit('SET_ERRORS', error.response.data.errors, {
             root: true
           });
         }
       });
     });
   },
-  // FUNGSI UNTUK MENGAMBIL SINGLE DATA BERDASARKAN KODE OUTLET
   editOutlet: function editOutlet(_ref3, payload) {
     var commit = _ref3.commit;
     return new Promise(function (resolve, reject) {
-      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].get('/outlets/${payload}/edit').then(function (response) {
+      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].get("/outlets/".concat(payload, "/edit")).then(function (response) {
         commit('ASSIGN_FORM', response.data.data);
         resolve(response.data);
       });
     });
   },
-  // UNTUK MENGUPDATE DATA
   updateOutlet: function updateOutlet(_ref4, payload) {
     var state = _ref4.state,
         commit = _ref4.commit;
     return new Promise(function (resolve, reject) {
-      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].put('/outlets/$(payload), state.outlet').then(function (response) {
+      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].put("/outlets/".concat(payload), state.outlet).then(function (response) {
         commit('CLEAR_FORM');
         resolve(response.data);
       });
     });
   },
-  // FUNGSI UNTUK MENGHAPUS DATA
   removeOutlet: function removeOutlet(_ref5, payload) {
     var dispatch = _ref5.dispatch;
     return new Promise(function (resolve, reject) {
-      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('/outlets/$(payload)').then(function (response) {
+      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]("/outlets/".concat(payload)).then(function (response) {
         dispatch('getOutlets').then(function () {
           return resolve();
         });

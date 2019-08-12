@@ -9,6 +9,11 @@ use App\Http\Resources\OutletCollection;
 
 class OutletController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     public function index()
     {
         $outlets = Outlet::orderBy('created_at', 'DESC');
@@ -26,7 +31,6 @@ class OutletController extends Controller
             'address' => 'required|string',
             'phone' => 'required|max:13'
         ]);
-
         Outlet::create($request->all());
         return response()->json(['status' => 'success'], 200);
     }
@@ -40,7 +44,7 @@ class OutletController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'code' => 'required|unique:outlets,code',
+            'code' => 'required|exists:outlets,code',
             'name' => 'required|string|max:100',
             'address' => 'required|string',
             'phone' => 'required|max:13'

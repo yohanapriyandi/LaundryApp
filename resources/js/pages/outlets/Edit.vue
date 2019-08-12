@@ -5,7 +5,7 @@
                 <h3 class="panel-title"> Edit Outlet</h3>
             </div>
             <div class="panel-body">
-                <outlet-form></outlet-form>>
+                <outlet-form></outlet-form>
                 <div class="form-group">
                     <button class="btn btn-primary btn-sm btn-flat" @click.prevent="submit">
                         <i class="fa fa-save"></i>  Update
@@ -22,7 +22,7 @@ import FormOutlets from './Form.vue'
 export default {
     name: 'EditOutlet',
     created() {
-        this.editOutlet(this.$route.param.id)
+        this.editOutlet(this.$route.params.id)
     },
     methods: {
         ...mapActions('outlet', ['editOutlet', 'updateOutlet']),
@@ -35,6 +35,6 @@ export default {
 
     components: {
         'outlet-form': FormOutlets
-    }
+    },
 }
 </script>
