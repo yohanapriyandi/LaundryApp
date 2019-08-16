@@ -14,6 +14,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
     <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('plugins/iCheck/square/blue.css') }}">
+    <!-- Checkbox iCheck->Blue -->
     <link rel="stylesheet" href="{{ asset('assets/css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
         folder instead of downloading all of them to reduce the load. -->
@@ -21,11 +23,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </head>
     <body class="hold-transition skin-blue layout-top-nav">
-
-        <div id="dw">
-            <app></app>
+        <div class="wrapper">
+            <div id="dw">
+                <app></app>
+            </div>
         </div>
-
     <!-- jQuery 3 -->
     <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <!-- Bootstrap 3.3.7 -->
@@ -38,7 +40,17 @@
     <script src="{{ asset('assets/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('assets/js/demo.js') }}"></script>
+    <script src="{{ asset('plugins/iCheck/icheck.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        $(function () {
+          $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' /* optional */
+          });
+        });
+      </script>
     </body>
 
 </html>
