@@ -35,7 +35,7 @@ const actions = {
 
     getLaundryType({commit}) {
         return new Promise((resolve, reject) => {
-            $axios.get('/products/laundry-type')
+            $axios.get(`/products/laundry-type`)
             .then((response) => {
                 commit('ASSIGN_LAUNDRY_TYPE', response.data.data)
                 resolve(response.data)
@@ -45,7 +45,7 @@ const actions = {
 
     addLaundryType({ commit }, payload) {
         return new Promise((resolve, reject) => {
-            $axios.post('/products/laundry-type', payload)
+            $axios.post(`/products/laundry-type`, payload)
             .then((response) => {
                 resolve(response.data)
             })
@@ -73,7 +73,7 @@ const actions = {
 
     editProduct({commit}, payload) {
         return new Promise((resolve, reject) => {
-            $axios.get('/products/${payload}/edit')
+            $axios.get(`/products/${payload}/edit`)
             .then((response) => {
                 resolve(response.data)
             })
@@ -82,8 +82,8 @@ const actions = {
 
     updateCourier({commit}, payload) {
         return new Promise((resolve,reject) => {
-            $axios.put('/products/${payload.id}', payload)
-            then((response) => {
+            $axios.put(`/products/${payload.id}`, payload)
+            .then((response) => {
                 resolve(response.data)
             })
             .catch((error) => {
@@ -96,7 +96,7 @@ const actions = {
 
     removeProduct({dispatch}, payload) {
         return new Promise((resolve, reject) => {
-            $axios.delete('/products/${payload}')
+            $axios.delete(`/products/${payload}`)
             .then((response) => {
                 dispatch('getProducts').then(() => resolve(response.data))
             })
