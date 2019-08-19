@@ -17,8 +17,8 @@
                         {{ row.item.user.name }}
                     </template>
                     <template slot="actions" slot-scope="row">
-                        <router-link :to="{ name: 'products.edit', params: { id: row.item.id }}" class="btn btn-warning btn-sm" > Edit</router-link>
-                        <button class="btn btn-danger btn-sm" @click="deleteProduct(row.item.id)"> Delete</button>
+                        <router-link :to="{ name: 'products.edit', params: { id: row.item.id }}" class="btn btn-warning btn-sm btn-flat" > Edit</router-link>
+                        <button class="btn btn-danger btn-sm btn-flat" @click="deleteProduct(row.item.id)"> Delete</button>
                     </template>
                 </b-table>
 

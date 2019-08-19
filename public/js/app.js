@@ -40145,7 +40145,7 @@ var render = function() {
                     _c(
                       "router-link",
                       {
-                        staticClass: "btn btn-warning btn-sm",
+                        staticClass: "btn btn-warning btn-sm btn-flat",
                         attrs: {
                           to: {
                             name: "products.edit",
@@ -40159,7 +40159,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-danger btn-sm",
+                        staticClass: "btn btn-danger btn-sm btn-flat",
                         on: {
                           click: function($event) {
                             return _vm.deleteProduct(row.item.id)
