@@ -65,5 +65,32 @@ class ProductController extends Controller
             return response()->json(['status' => 'failed'], 200, $headers);
         }
     }
+    // Fungsi edit data product dengan cara mengambil $id data yang akan di edit
+    public function edit($id)
+    {
+        $laundry = LaundryPrice::find($id);
+        return response()->json(['status' => 'success', 'data' => $laundry]);
+    }
+    //  Fungsi update data setelah selesai melakukan edit data
+    public function update(Request $request, $id)
+    {
+        $laundry = LaundryPrice::find($id);
+
+        $laundry->update([
+            'name' => $request->name,
+            'unit_type' => $request->unit_type,
+            'laundry_type_id' => $request->laundry_type,
+            'price' => $request->price
+        ]);
+
+        return response()->json(['status' => 'success']);
+    }
+    // Fungsi untuk menghapus data pada Products Section
+    public function destroy($id)
+    {
+        $laundry = LaundryPrice::find($id);
+        $laundry->delete();
+        return response()->json(['status' => 'success']);
+    }
 
 }
