@@ -28,15 +28,16 @@
                     </ul>
                     <!-- Navigasi menu untuk Outlets -->
                     <ul class="nav navbar-nav">
-                        <li><router-link to="/"> HOME<span class="sr-only">( current )</span></router-link></li>
+                        <li><router-link to="/"> Home<span class="sr-only">( current )</span></router-link></li>
                         <li><router-link :to="{ name: 'outlets.data' }"> Outlets</router-link></li>
                         <li><router-link :to="{ name: 'couriers.data' }"> Couriers</router-link></li>
+                        <li><router-link :to="{ name: 'products.data' }"> Products</router-link></li>
                     </ul>
-                    <form class="navbar-form navbar-left" role="search">
+                    <!-- <form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
                             <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
                         </div>
-                    </form>
+                    </form> -->
                 </div>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
