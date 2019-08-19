@@ -14,6 +14,10 @@ import DataCouriers from './pages/couriers/Courier.vue'
 import AddCouriers from './pages/couriers/Add.vue'
 import EditCouriers from './pages/couriers/Edit.vue'
 
+
+import IndexProduct from './pages/products/Index.vue'
+import DataProduct from './pages/products/Product.vue'
+import AddProduct from './pages/products/Add.vue'
 // import IndexProduct from './pages/products/Index.vue'
 // import DataProduct from './pages/products/Product.vue'
 // import AddProduct from './pages/products/Add.vue'
@@ -94,7 +98,28 @@ const router = new Router({
                     meta: {title: 'Edit Courier'}
                 }
             ]
+        },
+        {
+            path: '/products',
+            component: IndexProduct,
+            meta: { requiresAuth: true },
+            children: [
+                {
+                    path: '',
+                    name: 'products.data',
+                    component: DataProduct,
+                    meta: {title: 'Manage Product'}
+                },
+                {
+                    path: '/add',
+                    name: 'products.add',
+                    component: AddProduct,
+                    meta: {title: 'Add New Product'}
+                }
+
+            ]
         }
+
     ]
 });
 
