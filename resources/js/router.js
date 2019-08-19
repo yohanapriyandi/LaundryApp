@@ -18,10 +18,7 @@ import EditCouriers from './pages/couriers/Edit.vue'
 import IndexProduct from './pages/products/Index.vue'
 import DataProduct from './pages/products/Product.vue'
 import AddProduct from './pages/products/Add.vue'
-// import IndexProduct from './pages/products/Index.vue'
-// import DataProduct from './pages/products/Product.vue'
-// import AddProduct from './pages/products/Add.vue'
-// import EditProduct from './pages/products/Edit.vue'
+import EditProduct from './pages/products/Edit.vue'
 
 // import Setting from './pages/setting/Index.vue'
 // import SetPermission from './pages/setting/roles/SetPermission.vue'
@@ -115,6 +112,12 @@ const router = new Router({
                     name: 'products.add',
                     component: AddProduct,
                     meta: {title: 'Add New Product'}
+                },
+                {
+                    path: 'edit/:id',
+                    name: 'products.edit',
+                    component: EditProduct,
+                    meta: {title: 'Edit Product'}
                 }
 
             ]
