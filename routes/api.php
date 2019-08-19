@@ -21,4 +21,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::resource('/couriers', 'API\UserController')->except(['create', 'show', 'update']);
     Route::post('/couriers/{id}', 'API\UserController@update')->name('couriers.update');
 
+    Route::resource('/products', 'API\ProductController')->except(['create', 'show']);
+    Route::get('/products/laundry-type', 'API\ProductController@getLaundryType');
+    Route::post('/products/laundry-type', 'API\ProductController@storeLaundryType');
+
 });
