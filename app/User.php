@@ -49,4 +49,13 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+    public function rollAPiKey()
+    {
+        do {
+            # code...
+            $this->api_token = str_random(60);
+        } while ($this->where('api_token', $this->api_token)->exist());
+        $this->save();
+    }
 }

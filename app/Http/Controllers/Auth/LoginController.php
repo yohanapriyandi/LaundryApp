@@ -1,12 +1,12 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+// use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -20,16 +20,13 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
     use AuthenticatesUsers;
-
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
     protected $redirectTo = '/home';
-
     /**
      * Create a new controller instance.
      *
@@ -39,22 +36,21 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
     public function login(Request $request)
     {
         $this->validate($request, [
-            'email' =>'required|email|exists:users,email',
-            'password' => 'required|min:6'
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required'
         ]);
+        $auth = $request->except(['remember_me']);
 
-        $auth =$request->except(['remember_me']);
-        if (auth()->attempt($auth, $request->remember_me)) {
-            # code...
-            auth()->user()->update(['api_token' => Str::random(40)]);
+        // $remember_me = $request->has('remember_me') ? true : false; 
+        // $user = \App\User::where('email', $request->email)->first();        
+        
+        if (auth()->attempt($auth, $request->remember_me)) {            
+            auth()->user()->update(['api_token' => Str::random(60)]);
             return response()->json(['status' => 'success', 'data' => auth()->user()->api_token], 200);
         }
-
         return response()->json(['status' => 'failed']);
-
     }
 }

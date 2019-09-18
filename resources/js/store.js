@@ -29,7 +29,7 @@ const store = new Vuex.Store({
 
     mutations: {
         SET_TOKEN(state, payload){
-            state.token =payload
+            state.token = payload
         },
 
         SET_ERRORS(state, payload){
