@@ -10,7 +10,7 @@
             <div class="panel-body">
                 <b-table striped hover bordered :items="couriers.data" :fields="fields" show-empty>
                     <template slot="photo" slot-scope="row">
-                        <img :src="'/storage/couriers/' + row.item.photo" :width="80" :height="50">
+                        <img :src="'/storage/couriers/' + row.item.photo" :width="50" :height="40">
                     </template>
                     <template slot="outlet_id" slot-scope="row">
                         {{ row.item.outlet.name }}

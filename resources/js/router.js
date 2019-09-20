@@ -20,8 +20,8 @@ import DataProduct from './pages/products/Product.vue'
 import AddProduct from './pages/products/Add.vue'
 import EditProduct from './pages/products/Edit.vue'
 
-// import Setting from './pages/setting/Index.vue'
-// import SetPermission from './pages/setting/roles/SetPermission.vue'
+import Setting from './pages/setting/Index.vue'
+import SetPermission from './pages/setting/roles/SetPermission.vue'
 
 // import IndexExpenses from './pages/expenses/Index.vue'
 // import DataExpenses from './pages/expenses/Expenses.vue'
@@ -120,6 +120,19 @@ const router = new Router({
                     meta: {title: 'Edit Product'}
                 }
 
+            ]
+        },
+        {
+            path: '/setting',
+            component: Setting,
+            meta: {requiresAuth: true},
+            children: [
+                {
+                    path: 'role-permission',
+                    name: 'role.permissions',
+                    component: SetPermission,
+                    meta: {title: 'Set Permission'}
+                },
             ]
         }
 
