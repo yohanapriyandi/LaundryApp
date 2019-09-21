@@ -125,13 +125,13 @@ const router = new Router({
         {
             path: '/setting',
             component: Setting,
-            meta: {requiresAuth: true},
+            meta: { requiresAuth: true },
             children: [
                 {
                     path: 'role-permission',
                     name: 'role.permissions',
                     component: SetPermission,
-                    meta: {title: 'Set Permission'}
+                    meta: { title: 'Set Permissions' }
                 },
             ]
         }

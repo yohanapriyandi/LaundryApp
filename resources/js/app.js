@@ -2,18 +2,16 @@ import Vue from 'vue'
 import router from './router.js'
 import store from './store.js'
 import App from './App.vue'
-
-// Bootstrap-Vue
 import BootstrapVue from 'bootstrap-vue'
-// vueSweetalert
 import VueSweetalert2 from 'vue-sweetalert2'
-
-// Use them
+import Permissions from './mixins/Permission.js'
 
 Vue.use(BootstrapVue)
 Vue.use(VueSweetalert2)
+Vue.mixin(Permissions)
 
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import { mapActions, mapGetters } from 'vuex'
 
 new Vue({
     el:"#dw",
@@ -21,6 +19,20 @@ new Vue({
     store,
     components: {
         App
+    },
+
+    computed: {
+        ...mapGetters(['isAuth'])
+    },
+
+    methods: {
+        ...mapActions('user', ['getUserLogin'])
+    },
+
+    created() {
+        if (this.isAuth) {
+            this.getUserLogin()
+        }
     }
 
 })
