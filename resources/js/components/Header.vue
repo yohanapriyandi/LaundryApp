@@ -29,9 +29,15 @@
                     <!-- Navigasi menu untuk Outlets -->
                     <ul class="nav navbar-nav">
                         <li><router-link to="/"> Home<span class="sr-only">( current )</span></router-link></li>
-                        <li><router-link :to="{ name: 'outlets.data' }"> Outlets</router-link></li>
-                        <li><router-link :to="{ name: 'couriers.data' }"> Couriers</router-link></li>
-                        <li><router-link :to="{ name: 'products.data' }"> Products</router-link></li>
+                        <li v-if="$can('read outlets')"><router-link :to="{ name: 'outlets.data' }"> Outlets</router-link></li>
+                        <li v-if="$can('read couriers')"><router-link :to="{ name: 'couriers.data' }"> Couriers</router-link></li>
+                        <li v-if="$can('read products')"><router-link :to="{ name: 'products.data' }"> Products</router-link></li>
+                        <li class="dropdown" v-if="authenticated.role == 0">
+                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Settings <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><router-link :to="{name: 'role.permissions'}">Role Permission</router-link></li>
+                                </ul>
+                        </li>
                     </ul>
                     <!-- <form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
@@ -117,13 +123,13 @@
                         </li> -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="https://via.placeholder.com/160" class="user-image" alt="User Image">
-                                <span class="hidden-xs">Alexander Pierce</span>
+                                <img :src="'/storage/couriers/' + authenticated.photo" class="user-image" alt="User Image">
+                                <span class="hidden-xs">{{ authenticated.name }}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-header">
-                                    <img src="https://via.placeholder.com/160" class="img-circle" alt="User Image">
-                                    <p>Alexander Pierce - Web Developer <small>Member since Nov. 2012</small></p>
+                                    <img :src="'/storage/couriers/' + authenticated.photo" class="img-circle" alt="User Image">
+                                    <p>{{ authenticated.name }} <small >Member since Nov. 2012</small></p>
                                 </li>
                                 <!-- <li class="user-body">
                                     <div class="row">
@@ -143,7 +149,7 @@
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="javascript:void(0)" @click="logout" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -155,7 +161,25 @@
     </header>
 </template>
 <script>
-export default {
 
+import { mapState } from 'vuex'
+export default {
+    computed: {
+        ...mapState('user', {
+            authenticated: state => state.authenticated
+        })
+    },
+
+    methods: {
+        logout() {
+            return new Promise ((resolve, reject) => {
+                localStorage.removeItem('token')
+                resolve()
+            }).then(() => {
+                this.$store.state.token = localStorage.getItem('token')
+                this.$router.push('/login')
+            }) 
+        }
+    }
 }
 </script>
