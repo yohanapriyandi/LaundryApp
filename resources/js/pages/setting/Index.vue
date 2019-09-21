@@ -2,23 +2,26 @@
     <div class="content-wrapper">
         <div class="container">
             <section class="content-header">
-                <h1>Settings Page</h1>
+                <h1>
+                    Settings Page
+                </h1>
                 <breadcrumb></breadcrumb>
             </section>
+
             <section class="content">
                 <div class="row">
                     <router-view></router-view>
                 </div>
             </section>
         </div>
-    </div>
+    </div>    
 </template>
 <script>
-import Breadcrumb from '../../components/Breadcrumb.vue'
-export default {
-name:'IndexSetting',
-components:{
-    'breadcrumb':Breadcrumb
-}
-}
+    import Breadcrumb from '../../components/Breadcrumb.vue'
+    export default {
+        name: 'IndexSetting',
+        components: {
+            'breadcrumb': Breadcrumb
+        }
+    }
 </script>
