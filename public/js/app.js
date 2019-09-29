@@ -2392,7 +2392,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  nama: 'DataCourier',
+  name: 'DataCourier',
   created: function created() {
     this.getCouriers();
   },
@@ -3583,17 +3583,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "SetPermission",
+  name: 'SetPermission',
   data: function data() {
     return {
       role_user: {
@@ -3626,7 +3618,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return state.role_permission;
     }
   })),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('user', ['getUserLists', 'getRoles', 'getAllPermission', 'getRolePermission', 'setRolePermission', 'setRoleuser']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])('user', ['CLEAR_ROLE_PERMISSION']), {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('user', ['getUserLists', 'getRoles', 'getAllPermission', 'getRolePermission', 'setRolePermission', 'setRoleUser']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])('user', ['CLEAR_ROLE_PERMISSION']), {
     setRole: function setRole() {
       var _this = this;
 
@@ -3665,7 +3657,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this3 = this;
 
       this.setRolePermission({
-        role_is: this.role_selected,
+        role_id: this.role_selected,
         permissions: this.new_permission
       }).then(function (res) {
         if (res.status == 'success') {
@@ -30781,7 +30773,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.tab-pane {\n    height: 150px;\n    overflow-y: scroll;\n}\n", ""]);
+exports.push([module.i, "\n.tab-pane{\n    height:150px;\n    overflow-y:scroll;\n}\n", ""]);
 
 // exports
 
@@ -40675,7 +40667,7 @@ var render = function() {
               : _vm._e(),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "" } }, [_vm._v(" Role")]),
+              _c("label", { attrs: { for: "" } }, [_vm._v("Role")]),
               _vm._v(" "),
               _c(
                 "select",
@@ -40725,13 +40717,13 @@ var render = function() {
               _vm._v(" "),
               _vm.errors.role_id
                 ? _c("p", { staticClass: "text-danger" }, [
-                    _vm._v(" " + _vm._s(_vm.errors.role_id[0]) + " ")
+                    _vm._v(_vm._s(_vm.errors.role_id[0]))
                   ])
                 : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "" } }, [_vm._v(" User")]),
+              _c("label", { attrs: { for: "" } }, [_vm._v("User")]),
               _vm._v(" "),
               _c(
                 "select",
@@ -40774,11 +40766,7 @@ var render = function() {
                       { key: index, domProps: { value: row.id } },
                       [
                         _vm._v(
-                          " " +
-                            _vm._s(row.name) +
-                            " (" +
-                            _vm._s(row.email) +
-                            ") "
+                          _vm._s(row.name) + " (" + _vm._s(row.email) + ")"
                         )
                       ]
                     )
@@ -40788,18 +40776,27 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(1)
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger btn-sm",
+                  on: { click: _vm.setRole }
+                },
+                [_vm._v("Set Role")]
+              )
+            ])
           ])
         ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-7" }, [
         _c("div", { staticClass: "panel" }, [
-          _vm._m(2),
+          _vm._m(1),
           _vm._v(" "),
           _c("div", { staticClass: "panel-body" }, [
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "" } }, [_vm._v(" Role")]),
+              _c("label", { attrs: { for: "" } }, [_vm._v("Role")]),
               _vm._v(" "),
               _c(
                 "select",
@@ -40830,7 +40827,7 @@ var render = function() {
                   }
                 },
                 [
-                  _c("option", { attrs: { value: "" } }, [_vm._v(" Pilih")]),
+                  _c("option", { attrs: { value: "" } }, [_vm._v("Pilih")]),
                   _vm._v(" "),
                   _vm._l(_vm.roles, function(row, index) {
                     return _c(
@@ -40838,45 +40835,38 @@ var render = function() {
                       { key: index, domProps: { value: row.id } },
                       [_vm._v(_vm._s(row.name))]
                     )
-                  }),
-                  _vm._v(" "),
-                  _vm.errors.role_id
-                    ? _c("p", { staticClass: "text-dager" }, [
-                        _vm._v(_vm._s(_vm.errors.role_id[0]))
-                      ])
-                    : _vm._e()
+                  })
                 ],
                 2
-              )
+              ),
+              _vm._v(" "),
+              _vm.errors.role_id
+                ? _c("p", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errors.role_id[0]))
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "pull-right" }, [
+            _c("div", { staticClass: "form-group" }, [
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-info btn-sm btn-flat",
+                  staticClass: "btn btn-primary btn-sm",
                   on: { click: _vm.checkPermission }
                 },
-                [
-                  _c("i", { staticClass: "fa fa-check-square-o" }),
-                  _vm._v(
-                    " " +
-                      _vm._s(_vm.loading ? "Loading..." : "Check Permission") +
-                      "\n                        "
-                  )
-                ]
+                [_vm._v(_vm._s(_vm.loading ? "Loading..." : "Check"))]
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _vm.alert_permission
                 ? _c("div", { staticClass: "alert alert-success" }, [
-                    _vm._v(" Permission Has Been Assigned")
+                    _vm._v("Permission has been assigned")
                   ])
                 : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "nav-tabs-custom" }, [
-                _vm._m(3),
+                _vm._m(2),
                 _vm._v(" "),
                 _c("div", { staticClass: "tab-content" }, [
                   _c(
@@ -40921,12 +40911,12 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-info btn-sm btn-flat",
+                  staticClass: "btn btn-primary btn-sm",
                   on: { click: _vm.setPermission }
                 },
                 [
-                  _c("i", { staticClass: "fa fa-save" }),
-                  _vm._v(" Set Permission\n                    ")
+                  _c("i", { staticClass: "fa fa-send" }),
+                  _vm._v(" Set Permission\n                        ")
                 ]
               )
             ])
@@ -40942,18 +40932,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "panel-heading" }, [
-      _c("h3", { staticClass: "panel-title" }, [_vm._v("Assign Role to user")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "pull-right" }, [
-      _c("button", { staticClass: "btn btn-primary btn-sm btn-flat" }, [
-        _c("i", { staticClass: "fa fa-save" }),
-        _vm._v(" Set Role\n                        ")
-      ])
+      _c("h3", { staticClass: "panel-title" }, [_vm._v("Assign Role to User")])
     ])
   },
   function() {
@@ -40961,7 +40940,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "panel-heading" }, [
-      _c("h3", { staticClass: "panel-title" }, [_vm._v(" Set Permission")])
+      _c("h3", { staticClass: "panel-title" }, [_vm._v("Set Permission")])
     ])
   },
   function() {
@@ -40969,9 +40948,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("ul", { staticClass: "nav nav-tabs" }, [
-      _c("li", { staticClass: "acive" }, [
+      _c("li", { staticClass: "active" }, [
         _c("a", { attrs: { href: "#tab_1", "data-toggle": "tab" } }, [
-          _vm._v(" Permission")
+          _vm._v("Permissions")
         ])
       ])
     ])
@@ -59247,7 +59226,7 @@ var state = function state() {
   return {
     users: [],
     roles: [],
-    permission: [],
+    permissions: [],
     role_permission: [],
     authenticated: []
   };
@@ -59261,13 +59240,13 @@ var mutations = {
     state.roles = payload;
   },
   ASSIGN_PERMISSION: function ASSIGN_PERMISSION(state, payload) {
-    state.permission = payload;
+    state.permissions = payload;
   },
   ASSIGN_ROLE_PERMISSION: function ASSIGN_ROLE_PERMISSION(state, payload) {
     state.role_permission = payload;
   },
   CLEAR_ROLE_PERMISSION: function CLEAR_ROLE_PERMISSION(state, payload) {
-    state.role_permission = payload;
+    state.role_permission = [];
   },
   ASSIGN_USER_AUTH: function ASSIGN_USER_AUTH(state, payload) {
     state.authenticated = payload;
@@ -59292,8 +59271,8 @@ var actions = {
       _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].post("/set-role-user", payload).then(function (response) {
         resolve(response.data);
       })["catch"](function (error) {
-        if (error.response.data == 422) {
-          commit('SET_ERRORS', errors.response.data.errors, {
+        if (error.response.status == 422) {
+          commit('SET_ERRORS', error.response.data.errors, {
             root: true
           });
         }
@@ -59341,7 +59320,7 @@ var actions = {
       _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].post("/set-role-permission", payload).then(function (response) {
         resolve(response.data);
       })["catch"](function (error) {
-        if (error.response.status = 422) {
+        if (error.response.status == 422) {
           commit('SET_ERRORS', error.response.data.errors, {
             root: true
           });
@@ -59352,7 +59331,7 @@ var actions = {
   getUserLogin: function getUserLogin(_ref7) {
     var commit = _ref7.commit;
     return new Promise(function (resolve, reject) {
-      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].get("/user-authenticated").then(function (response) {
+      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].get("user-authenticated").then(function (response) {
         commit('ASSIGN_USER_AUTH', response.data.data);
         resolve(response.data);
       });
