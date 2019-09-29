@@ -44,7 +44,7 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 export default {
-    nama: 'DataCourier',
+    name: 'DataCourier',
     created () {
         this.getCouriers()
     },
