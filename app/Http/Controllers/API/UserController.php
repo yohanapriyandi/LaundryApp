@@ -57,6 +57,7 @@ class UserController extends Controller
             return response()->json(['status' => 'error', 'data' => $e->getMessage()], 200);
         }
     }
+
     public function edit($id)
     {
         $user = User::find($id);

@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers\Auth;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\JsonResponse;
@@ -43,6 +44,11 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
         $auth = $request->except(['remember_me']);
+        
+        // $pw = 12345678;
+        // $hashed = bcrypt($pw);
+        // $result =  Hash::check($pw, $hashed);
+        // dd($result);
 
         // $remember_me = $request->has('remember_me') ? true : false; 
         // $user = \App\User::where('email', $request->email)->first();        
