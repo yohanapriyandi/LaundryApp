@@ -14,13 +14,13 @@ class RolePermissionController extends Controller
     public function getAllRole()
     {
         $roles = Role::all();
-        return response()->json(['status' => 'success', 'data' => $roles], 200);
+        return response()->json(['status' => 'success', 'data' => $roles]);
     }
 
     public function getAllPermission()
     {
-        $permission = Permission::all();        
-        return response()->json(['status' => 'success', 'data' => $permission], 200);
+        $permission = Permission::all();
+        return response()->json(['status' => 'success', 'data' => $permission]);
     }
 
     public function getRolePermission(Request $request)
@@ -42,10 +42,10 @@ class RolePermissionController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-    public function  setRoleUser(Request $request)
+    public function setRoleUser(Request $request)
     {
-        $this->validate($request,[
-            'user_id' => 'required|exists:users, id',
+        $this->validate($request, [
+            'user_id' => 'required|exists:users,id',
             'role' => 'required'
         ]);
         $user = User::find($request->user_id);
