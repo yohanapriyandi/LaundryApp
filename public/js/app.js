@@ -2277,10 +2277,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       });
     }
-  }) // destroyed() {
-  //     this.getUserLogin()
-  // }
-
+  }),
+  destroyed: function destroyed() {
+    this.getUserLogin();
+  }
 });
 
 /***/ }),
