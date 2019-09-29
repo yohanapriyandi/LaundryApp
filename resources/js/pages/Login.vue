@@ -86,8 +86,8 @@ export default {
             })
         }
     },
-    // destroyed() {
-    //     this.getUserLogin()
-    // }
+    destroyed() {
+        this.getUserLogin()
+    }
 }
 </script>
