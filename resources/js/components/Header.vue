@@ -47,7 +47,7 @@
                 </div>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown messages-menu">
+                        <!-- <li class="dropdown messages-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope-o"></i>
                                 <span class="label label-success">4</span>
@@ -72,7 +72,7 @@
                                 </li>
                                 <li class="footer"><a href="#">See All Messages</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bell-o"></i>
@@ -172,13 +172,13 @@ export default {
 
     methods: {
         logout() {
-            return new Promise ((resolve, reject) => {
+            return new Promise((resolve, reject) => {
                 localStorage.removeItem('token')
                 resolve()
             }).then(() => {
                 this.$store.state.token = localStorage.getItem('token')
                 this.$router.push('/login')
-            }) 
+            })
         }
     }
 }
