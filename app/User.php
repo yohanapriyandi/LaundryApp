@@ -51,6 +51,11 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
+    public function getNameAttributes($value)
+    {
+        return ucfirst($value);
+    }
+
     public function rollAPiKey()
     {
         do {
