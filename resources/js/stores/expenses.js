@@ -61,6 +61,15 @@ const actions = {
             })
         })
     },
+    
+    removeExpenses({ dispatch }, payload) {
+        return new Promise((resolve, reject) => {
+            $axios.delete(`/expenses/${payload}`)
+            .then((response) => {
+                dispatch('getExpenses').then(() => resolve())
+            })
+        })
+    },
 
     acceptExpenses({commit}, payload) {
         return new Promise((resolve, reject) => {
@@ -80,15 +89,6 @@ const actions = {
         })
 
     },
-
-    removeExpenses({dispatch}, payload) {
-        return new Promise((resolve, reject) => {
-            $axios.delete(`/expenses, ${payload}`)
-            .then((response) => {
-                dispatch('getExpenses').then(() => resolve)
-            })
-        })
-    }
 }
 
 export default {
