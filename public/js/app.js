@@ -2106,6 +2106,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2897,7 +2898,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         key: 'actions',
         label: 'Aksi'
       }],
-      // Variabel untuk search model
       search: ''
     };
   },
@@ -2928,13 +2928,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       this.$swal({
-        title: 'Kamu Yakin ?',
-        text: 'Tindakan ini akan menghapus secara permanen',
+        title: 'Kamu Yakin?',
+        text: "Tindakan ini akan menghapus secara permanent!",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Iya, lanjutkan'
+        confirmButtonText: 'Iya, Lanjutkan!'
       }).then(function (result) {
         if (result.value) {
           _this.removeExpenses(id);
@@ -66285,7 +66285,7 @@ var render = function() {
                     ? _c(
                         "ul",
                         { staticClass: "menu" },
-                        _vm._l(_vm.notification, function(row, index) {
+                        _vm._l(_vm.notifications, function(row, index) {
                           return _c("li", { key: index }, [
                             _c(
                               "a",
@@ -67603,14 +67603,14 @@ var render = function() {
                   return [
                     row.item.status == 1
                       ? _c("span", { staticClass: "label label-success" }, [
-                          _vm._v(" Diterima")
+                          _vm._v("Diterima")
                         ])
                       : row.item.status == 0
                       ? _c("span", { staticClass: "label label-warning" }, [
-                          _vm._v(" Diproses")
+                          _vm._v("Diproses")
                         ])
                       : _c("span", { staticClass: "label label-default" }, [
-                          _vm._v(" Ditolak")
+                          _vm._v("Ditolak")
                         ])
                   ]
                 }
@@ -67632,9 +67632,9 @@ var render = function() {
                 fn: function(row) {
                   return [
                     _vm._v(
-                      "                        \n                     " +
+                      "\n                    " +
                         _vm._s(row.item.reason == "" ? "-" : row.item.reason) +
-                        "                           \n                "
+                        "\n                "
                     )
                   ]
                 }
@@ -67699,7 +67699,8 @@ var render = function() {
                 ? _c("p", [
                     _c("i", { staticClass: "fa fa-bars" }),
                     _vm._v(
-                      _vm._s(_vm.expenses.data.length) +
+                      "  " +
+                        _vm._s(_vm.expenses.data.length) +
                         " item dari " +
                         _vm._s(_vm.expenses.meta.total) +
                         " total data"
@@ -88292,8 +88293,18 @@ var actions = {
       });
     });
   },
-  acceptExpenses: function acceptExpenses(_ref5, payload) {
-    var commit = _ref5.commit;
+  removeExpenses: function removeExpenses(_ref5, payload) {
+    var dispatch = _ref5.dispatch;
+    return new Promise(function (resolve, reject) {
+      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]("/expenses/".concat(payload)).then(function (response) {
+        dispatch('getExpenses').then(function () {
+          return resolve();
+        });
+      });
+    });
+  },
+  acceptExpenses: function acceptExpenses(_ref6, payload) {
+    var commit = _ref6.commit;
     return new Promise(function (resolve, reject) {
       _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].post("/expenses/accept", {
         id: payload
@@ -88302,21 +88313,11 @@ var actions = {
       });
     });
   },
-  cancelExpenses: function cancelExpenses(_ref6, payload) {
-    var commit = _ref6.commit;
+  cancelExpenses: function cancelExpenses(_ref7, payload) {
+    var commit = _ref7.commit;
     return new Promise(function (resolve, reject) {
       _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].post("/expenses/cancel", payload).then(function (response) {
         resolve(response.data);
-      });
-    });
-  },
-  removeExpenses: function removeExpenses(_ref7, payload) {
-    var dispatch = _ref7.dispatch;
-    return new Promise(function (resolve, reject) {
-      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]("/expenses, ".concat(payload)).then(function (response) {
-        dispatch('getExpenses').then(function () {
-          return resolve;
-        });
       });
     });
   }

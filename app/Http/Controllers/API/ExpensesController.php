@@ -96,7 +96,7 @@ class ExpensesController extends Controller
 
     public function destroy($id)
     {
-        $expenses = Expenses::find($id);
+        $expenses = Expense::find($id);
         $expenses->delete();
         return response()->json(['status' => 'success']);
     }
