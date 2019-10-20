@@ -21,7 +21,7 @@ const actions = {
         }) 
     },
 
-    readNotifications({dispatch}, payload) {
+    readNotification({dispatch}, payload) {
         return new Promise((resolve, reject) => {
             $axios.post(`notification`, payload)
             .then((response) => {

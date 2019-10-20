@@ -2057,56 +2057,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2137,7 +2087,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             id: row.data.expenses.id
           }
         });
-      });
+      }); // return new Promise((resolve, reject) => { 
+      //     this.readNotification
+      //     id: row.id
+      //     resolve()
+      //     }).then(() => {
+      //         this.$router.push({
+      //          name: 'expenses.view', params: {
+      //              id: row.data.expenses.id
+      //              } 
+      //         })
+      //     })
     },
     logout: function logout() {
       var _this2 = this;
@@ -66143,7 +66103,7 @@ var render = function() {
             _c(
               "router-link",
               { staticClass: "navbar-brand", attrs: { to: "/" } },
-              [_c("b", [_vm._v("LARA")]), _vm._v("WASH")]
+              [_vm._v("LARA"), _c("b", [_vm._v("WASH")])]
             ),
             _vm._v(" "),
             _vm._m(0)
@@ -66158,16 +66118,14 @@ var render = function() {
             attrs: { id: "navbar-collapse" }
           },
           [
-            _c("ul", { staticClass: "nav navbar-nav" }),
-            _vm._v(" "),
             _c("ul", { staticClass: "nav navbar-nav" }, [
               _c(
                 "li",
                 [
                   _c("router-link", { attrs: { to: "/" } }, [
-                    _vm._v(" Dashboard"),
+                    _vm._v("Home "),
                     _c("span", { staticClass: "sr-only" }, [
-                      _vm._v("( current )")
+                      _vm._v("(current)")
                     ])
                   ])
                 ],
@@ -66181,7 +66139,7 @@ var render = function() {
                       _c(
                         "router-link",
                         { attrs: { to: { name: "outlets.data" } } },
-                        [_vm._v(" Outlets")]
+                        [_vm._v("Outlets")]
                       )
                     ],
                     1
@@ -66195,7 +66153,7 @@ var render = function() {
                       _c(
                         "router-link",
                         { attrs: { to: { name: "couriers.data" } } },
-                        [_vm._v(" Couriers")]
+                        [_vm._v("Couriers")]
                       )
                     ],
                     1
@@ -66209,7 +66167,7 @@ var render = function() {
                       _c(
                         "router-link",
                         { attrs: { to: { name: "products.data" } } },
-                        [_vm._v(" Products")]
+                        [_vm._v("Products")]
                       )
                     ],
                     1
@@ -66222,7 +66180,7 @@ var render = function() {
                   _c(
                     "router-link",
                     { attrs: { to: { name: "expenses.data" } } },
-                    [_vm._v(" Expenses")]
+                    [_vm._v("Expenses")]
                   )
                 ],
                 1
@@ -66257,7 +66215,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "navbar-custom-menu" }, [
           _c("ul", { staticClass: "nav navbar-nav" }, [
-            _c("li", { staticClass: "dropdown notifications-menu" }, [
+            _c("li", { staticClass: "dropdown messages-menu" }, [
               _c(
                 "a",
                 {
@@ -66307,29 +66265,24 @@ var render = function() {
                                       "\n                                                "
                                   ),
                                   _c("small", [
-                                    _c("i", {
-                                      staticClass: "fa fa-facebook-o"
-                                    }),
+                                    _c("i", { staticClass: "fa fa-clock-o" }),
                                     _vm._v(
-                                      "  " +
+                                      " " +
                                         _vm._s(
                                           _vm._f("formatDate")(row.created_at)
-                                        ) +
-                                        " "
+                                        )
                                     )
                                   ])
                                 ]),
                                 _vm._v(" "),
                                 _c("p", [
                                   _vm._v(
-                                    " " +
-                                      _vm._s(
-                                        row.data.expenses.description.substr(
-                                          0,
-                                          30
-                                        )
-                                      ) +
-                                      " "
+                                    _vm._s(
+                                      row.data.expenses.description.substr(
+                                        0,
+                                        30
+                                      )
+                                    )
                                   )
                                 ])
                               ]
@@ -66339,9 +66292,7 @@ var render = function() {
                         0
                       )
                     : _vm._e()
-                ]),
-                _vm._v(" "),
-                _vm._m(3)
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -66356,7 +66307,7 @@ var render = function() {
                   _c("img", {
                     staticClass: "user-image",
                     attrs: {
-                      src: "/storage/couriers/" + _vm.authenticated.photo,
+                      src: "https://via.placeholder.com/160",
                       alt: "User Image"
                     }
                   }),
@@ -66372,16 +66323,15 @@ var render = function() {
                   _c("img", {
                     staticClass: "img-circle",
                     attrs: {
-                      src: "/storage/couriers/" + _vm.authenticated.photo,
+                      src: "https://via.placeholder.com/160",
                       alt: "User Image"
                     }
                   }),
                   _vm._v(" "),
-                  _c("p", [
-                    _vm._v(_vm._s(_vm.authenticated.name) + " "),
-                    _c("small", [_vm._v("Member since Nov. 2012")])
-                  ])
+                  _c("p", [_vm._v(_vm._s(_vm.authenticated.name))])
                 ]),
+                _vm._v(" "),
+                _vm._m(3),
                 _vm._v(" "),
                 _c("li", { staticClass: "user-footer" }, [
                   _vm._m(4),
@@ -66456,8 +66406,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "footer" }, [
-      _c("a", { attrs: { href: "#" } }, [_vm._v("View all")])
+    return _c("li", { staticClass: "user-body" }, [
+      _c("div", { staticClass: "row" })
     ])
   },
   function() {
@@ -85742,8 +85692,8 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       if (this.isAuth) {
         window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_9__["default"]({
           broadcaster: 'pusher',
-          key: "",
-          cluster: "mt1",
+          key: "39c4b1b58d4fb6902c45",
+          cluster: "ap1",
           encrypted: false,
           auth: {
             headers: {
@@ -88230,8 +88180,7 @@ var actions = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api.js */ "./resources/js/api.js");
- // import { reject } from 'q'
-// import { resolveCname } from 'dns'
+
 
 var state = function state() {
   return {
@@ -88364,7 +88313,7 @@ var actions = {
       });
     });
   },
-  readNotifications: function readNotifications(_ref2, payload) {
+  readNotification: function readNotification(_ref2, payload) {
     var dispatch = _ref2.dispatch;
     return new Promise(function (resolve, reject) {
       _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].post("notification", payload).then(function (response) {

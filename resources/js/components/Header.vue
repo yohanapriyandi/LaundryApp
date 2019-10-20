@@ -3,7 +3,7 @@
         <nav class="navbar navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-                    <router-link to="/" class="navbar-brand"><b>LARA</b>WASH</router-link>
+                    <router-link to="/" class="navbar-brand">LARA<b>WASH</b></router-link>
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                         <i class="fa fa-bars"></i>
                     </button>
@@ -11,70 +11,30 @@
 
                 <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <!-- <li class="active"><router-link to="/">Home <span class="sr-only">(current)</span></router-link></li> -->
-                        <!-- <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                        <li><router-link to="/">Home <span class="sr-only">(current)</span></router-link></li>
+                        <li v-if="$can('read outlets')"><router-link :to="{ name: 'outlets.data' }">Outlets</router-link></li>
+                        <li v-if="$can('read couriers')"><router-link :to="{ name: 'couriers.data' }">Couriers</router-link></li>
+                        <li v-if="$can('read products')"><router-link :to="{ name: 'products.data' }">Products</router-link></li>
+                        <!-- <li><router-link :to="{ name: 'customers.data' }">Customer</router-link></li> -->
+                        <li><router-link :to="{ name: 'expenses.data' }">Expenses</router-link></li>
+                        <!-- <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Transactions <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
+                                <li><router-link :to="{ name: 'transactions.list' }">List</router-link></li>
+                                <li><router-link :to="{ name: 'transactions.add' }">Add New</router-link></li>
                             </ul>
                         </li> -->
-                    </ul>
-                    <!-- Navigasi menu untuk Outlets -->
-                    <ul class="nav navbar-nav">
-                        <li><router-link to="/"> Dashboard<span class="sr-only">( current )</span></router-link></li>
-                        <li v-if="$can('read outlets')"><router-link :to="{ name: 'outlets.data' }"> Outlets</router-link></li>
-                        <li v-if="$can('read couriers')"><router-link :to="{ name: 'couriers.data' }"> Couriers</router-link></li>
-                        <li v-if="$can('read products')"><router-link :to="{ name: 'products.data' }"> Products</router-link></li>
-                        <li><router-link :to="{name: 'expenses.data'}"> Expenses</router-link></li>
                         <li class="dropdown" v-if="authenticated.role == 0">
                             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Settings <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><router-link :to="{name: 'role.permissions'}">Role Permission</router-link></li>
-                                </ul>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><router-link :to="{name: 'role.permissions'}">Role Permission</router-link></li>
+                            </ul>
                         </li>
                     </ul>
-                    <!-- <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
-                        </div>
-                    </form> -->
                 </div>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        <!-- <li class="dropdown messages-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-envelope-o"></i>
-                                <span class="label label-success">4</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">You have 4 messages</li>
-                                <li>
-                                    <ul class="menu">
-                                        <li>
-                                            <a href="#">
-                                                <div class="pull-left">
-                                                    <img src="https://via.placeholder.com/160" class="img-circle" alt="User Image">
-                                                </div>
-                                                <h4>
-                                                    Support Team
-                                                    <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="footer"><a href="#">See All Messages</a></li>
-                            </ul>
-                        </li> -->
-                        <li class="dropdown notifications-menu">
+                        <li class="dropdown messages-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bell-o"></i>
                                 <span class="label label-success">{{ notifications.length }}</span>
@@ -83,17 +43,35 @@
                                 <li class="header">You have {{ notifications.length }} messages</li>
                                 <li>
                                     <ul class="menu" v-if="notifications.length > 0">
-                                        <li v-for="(row, index) in notification" :key="index">
+                                        <li v-for="(row, index) in notifications" :key="index">
                                             <a href="javascript:void(0)" @click="readNotif(row)">
                                                 <div class="pull-left">
                                                     <img src="https://via.placeholder.com/160" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
-                                                    {{  row.data.sender_name }}
-                                                    <small> <i class="fa fa-facebook-o"></i>  {{  row.created_at | formatDate }} </small>
+                                                    {{ row.data.sender_name }}
+                                                    <small><i class="fa fa-clock-o"></i> {{ row.created_at | formatDate }}</small>
                                                 </h4>
-
-                                                <p> {{ row.data.expenses.description.substr(0, 30) }} </p>
+                                                <p>{{ row.data.expenses.description.substr(0, 30) }}</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- <li class="footer"><a href="#">See All Messages</a></li> -->
+                            </ul>
+                        </li>
+                        <!-- <li class="dropdown notifications-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="label label-warning">10</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">You have 10 notifications</li>
+                                <li>
+                                    <ul class="menu">
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-users text-aqua"></i> 5 new members joined today
                                             </a>
                                         </li>
                                     </ul>
@@ -101,48 +79,20 @@
                                 <li class="footer"><a href="#">View all</a></li>
                             </ul>
                         </li>
-                        <!-- <li class="dropdown tasks-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-flag-o"></i>
-                                <span class="label label-danger">9</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">You have 9 tasks</li>
-                                <li>
-                                    <ul class="menu">
-                                        <li>
-                                            <a href="#">
-                                                <h3>
-                                                    Design some buttons
-                                                    <small class="pull-right">20%</small>
-                                                </h3>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="sr-only">20% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="footer">
-                                    <a href="#">View all tasks</a>
-                                </li>
-                            </ul>
-                        </li> -->
+                         -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img :src="'/storage/couriers/' + authenticated.photo" class="user-image" alt="User Image">
+                                <img src="https://via.placeholder.com/160" class="user-image" alt="User Image">
                                 <span class="hidden-xs">{{ authenticated.name }}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-header">
-                                    <img :src="'/storage/couriers/' + authenticated.photo" class="img-circle" alt="User Image">
-                                    <p>{{ authenticated.name }} <small >Member since Nov. 2012</small></p>
+                                    <img src="https://via.placeholder.com/160" class="img-circle" alt="User Image">
+                                    <p>{{ authenticated.name }}</p>
                                 </li>
-                                <!-- <li class="user-body">
+                                <li class="user-body">
                                     <div class="row">
-                                        <div class="col-xs-4 text-center">
+                                        <!-- <div class="col-xs-4 text-center">
                                             <a href="#">Followers</a>
                                         </div>
                                         <div class="col-xs-4 text-center">
@@ -150,9 +100,9 @@
                                         </div>
                                         <div class="col-xs-4 text-center">
                                             <a href="#">Friends</a>
-                                        </div>
+                                        </div> -->
                                     </div>
-                                </li> -->
+                                </li>
                                 <li class="user-footer">
                                     <div class="pull-left">
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
@@ -169,8 +119,8 @@
         </nav>
     </header>
 </template>
-<script>
 
+<script>
 import { mapState, mapActions } from 'vuex'
 import moment from 'moment'
 export default {
@@ -178,24 +128,39 @@ export default {
         ...mapState('user', {
             authenticated: state => state.authenticated
         }),
-
         ...mapState('notification', {
             notifications: state => state.notifications
         })
     },
-
     filters: {
         formatDate(val) {
-            return moment (new Date(val)).fromNow()
+            return moment(new Date(val)).fromNow()
         }
     },
-
     methods: {
         ...mapActions('notification', ['readNotification']),
-        readNotif(row){
-            this.readNotification({ id: row.id}).then(() => this.$router.push({name: 'expenses.view', params:{id: row.data.expenses.id} }))
-        },
+        readNotif(row) {
+            this.readNotification({ 
+                id: row.id
+                }).then(() => this.$router.push({
+                     name: 'expenses.view', params: {
+                         id: row.data.expenses.id
+                         } 
+                    }))
 
+
+            // return new Promise((resolve, reject) => { 
+            //     this.readNotification
+            //     id: row.id
+            //     resolve()
+            //     }).then(() => {
+            //         this.$router.push({
+            //          name: 'expenses.view', params: {
+            //              id: row.data.expenses.id
+            //              } 
+            //         })
+            //     })
+        },
         logout() {
             return new Promise((resolve, reject) => {
                 localStorage.removeItem('token')
@@ -204,9 +169,7 @@ export default {
                 this.$store.state.token = localStorage.getItem('token')
                 this.$router.push('/login')
             })
-        },
-
-
+        }
     }
 }
 </script>

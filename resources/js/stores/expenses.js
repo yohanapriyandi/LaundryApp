@@ -1,6 +1,4 @@
 import $axios from '../api.js'
-// import { reject } from 'q'
-// import { resolveCname } from 'dns'
 
 const state = () => ({
     expenses: [],
@@ -61,7 +59,7 @@ const actions = {
             })
         })
     },
-    
+
     removeExpenses({ dispatch }, payload) {
         return new Promise((resolve, reject) => {
             $axios.delete(`/expenses/${payload}`)

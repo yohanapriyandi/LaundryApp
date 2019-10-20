@@ -57,7 +57,7 @@ class ExpenseNotification extends Notification implements ShouldQueue
     {
         return [
             'sender_id' => $this->user->id,
-            'sender_name' => $this->user->user,
+            'sender_name' => $this->user->name,
             'expenses' => $this->expenses
         ];
     }
@@ -67,7 +67,7 @@ class ExpenseNotification extends Notification implements ShouldQueue
     {
         return new BroadcastMessage([
             'sender_id' => $this->user->id,
-            'sender_name' => $this->user->user,
+            'sender_name' => $this->user->name,
             'expenses' => $this->expenses
         ]);
     }
