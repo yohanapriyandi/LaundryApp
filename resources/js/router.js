@@ -29,6 +29,15 @@ import CreateExpenses from './pages/expenses/Add.vue'
 import ViewExpenses from './pages/expenses/View.vue'
 import EditExpenses from './pages/expenses/Edit.vue'
 
+import IndexCustomer from './pages/customers/Index.vue'
+import DataCustomer from './pages/customers/Customer.vue'
+import AddCustomer from './pages/customers/Add.vue'
+import EditCustomer from './pages/customers/Edit.vue'
+
+import IndexTransaction from './pages/transactions/Index.vue'
+import AddTransaction from './pages/transactions/Add.vue'
+import ViewTransaction from './pages/transactions/View.vue'
+import ListTransaction from './pages/transactions/List.vue'
 
 Vue.use(Router)
 
@@ -170,8 +179,58 @@ const router = new Router({
                 }
 
             ]
-        }
+        },
 
+        {
+            path: '/customers',
+            component: IndexCustomer,
+            meta: { requiresAuth: true },
+            children: [
+                {
+                    path: '',
+                    name: 'customers.data',
+                    component: DataCustomer,
+                    meta: { title: 'Manage Customers' }
+                },
+                {
+                    path: 'add',
+                    name: 'customers.add',
+                    component: AddCustomer,
+                    meta: { title: 'Add New Customers' }
+                },
+                {
+                    path: 'edit/:id',
+                    name: 'customers.edit',
+                    component: EditCustomer,
+                    meta: { title: 'Edit Customers' }
+                }
+            ]
+        },
+        {
+            path: '/transactions',
+            component: IndexTransaction,
+            meta: { requiresAuth: true },
+            children: [
+                {
+                    path: 'create',
+                    name: 'transactions.add',
+                    component: AddTransaction,
+                    meta: { title: 'Create New Transaction' }
+                },
+                {
+                    path: 'view/:id',
+                    name: 'transactions.view',
+                    component: ViewTransaction,
+                    meta: { title: 'View Transaction' }
+                },
+                {
+                    path: 'list',
+                    name: 'transactions.list',
+                    component: ListTransaction,
+                    meta: { title: 'List Transaction' }
+                }
+            ]
+        }
     ]
 });
 
