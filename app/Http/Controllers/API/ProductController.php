@@ -48,7 +48,9 @@ class ProductController extends Controller
             'name' =>'required|string|max:100',
             'unit_type' => 'required',
             'price' => 'required|integer',
-            'laundry_type' => 'required'
+            'laundry_type' => 'required',
+            'service' => 'required|integer',
+            'service_type' => 'required'
         ]);
 
         try {
@@ -57,12 +59,14 @@ class ProductController extends Controller
                 'unit_type' => $request->unit_type,
                 'laundry_type_id' => $request->laundry_type,
                 'price' => $request->price,
-                'user_id' =>auth()->user()->id
+                'user_id' =>auth()->user()->id,
+                'service' => $request->service,
+                'service_type' => $request->service_type
             ]);
             return response()->json(['status' => 'success']);
         }catch(\Exception $e)
         {
-            return response()->json(['status' => 'failed'], 200, $headers);
+            return response()->json(['status' => 'failed']);
         }
     }
     // Fungsi edit data product dengan cara mengambil $id data yang akan di edit
@@ -74,13 +78,24 @@ class ProductController extends Controller
     //  Fungsi update data setelah selesai melakukan edit data
     public function update(Request $request, $id)
     {
-        $laundry = LaundryPrice::find($id);
+        $this->validate($request, [
+            'name' =>'required|string|max:100',
+            'unit_type' => 'required',
+            'price' => 'required|integer',
+            'laundry_type' => 'required',
+            'service' => 'required|integer',
+            'service_type' => 'required'
+        ]);
 
+        $laundry = LaundryPrice::find($id);
         $laundry->update([
             'name' => $request->name,
             'unit_type' => $request->unit_type,
             'laundry_type_id' => $request->laundry_type,
-            'price' => $request->price
+            'price' => $request->price,
+            'service' => $request->service,
+            'service_type' => $request->service_type
+
         ]);
 
         return response()->json(['status' => 'success']);
