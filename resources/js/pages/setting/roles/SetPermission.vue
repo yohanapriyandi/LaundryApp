@@ -24,7 +24,9 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-danger btn-sm" @click="setRole">Set Role</button>
+                            <div class="pull-right">
+                                <button class="btn btn-tumblr btn-sm" @click="setRole">Set Role</button>
+                            </div>                            
                         </div>
                     </div>
                 </div>
@@ -41,8 +43,8 @@
                             </select>
                             <p class="text-danger" v-if="errors.role_id">{{ errors.role_id[0] }}</p>
                         </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary btn-sm" @click="checkPermission">{{ loading ? 'Loading...':'Check' }}</button>
+                        <div class="form-group">                            
+                                <button class="btn btn-microsoft btn-sm" @click="checkPermission">{{ loading ? 'Loading...':'Check' }}</button>              
                         </div>
                         <div class="form-group">
                             <div class="alert alert-success" v-if="alert_permission">Permission has been assigned</div>
@@ -67,12 +69,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="pull-right">
-                            <button class="btn btn-primary btn-sm" @click="setPermission">
+                        </div>                        
+                            <button class="btn btn-microsoft btn-sm" @click="setPermission">
                                 <i class="fa fa-send"></i> Set Permission
-                            </button>
-                        </div>
+                            </button>                        
                     </div>
                 </div>
             </div>

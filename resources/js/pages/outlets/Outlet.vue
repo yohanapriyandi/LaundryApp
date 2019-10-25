@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="panel">
             <div class="panel-heading">
-                <router-link :to="{ name: 'outlets.add' }" class="btn btn-primary btn-sm btn-flat">Tambah</router-link>
+                <router-link :to="{ name: 'outlets.add' }" class="btn btn-microsoft btn-sm btn-flat">Tambah</router-link>
                 <div class="pull-right">
                     <input type="text" class="form-control" placeholder="Cari..." v-model="search">
                 </div>
@@ -14,8 +14,8 @@
                         <span class="label label-default" v-else>Inactive</span>
                     </template>
                     <template slot="actions" slot-scope="row">
-                        <router-link :to="{ name: 'outlets.edit', params: {id: row.item.code} }" class="btn btn-warning btn-sm text-center">Edit</router-link>
-                        <button class="btn btn-danger btn-sm text-center " @click="deleteOutlet(row.item.id)">Delete</button>
+                        <router-link :to="{ name: 'outlets.edit', params: {id: row.item.code} }" class="btn btn-microsoft btn-xs text-center"> <i class="fa fa-pencil"></i></router-link>
+                        <button class="btn btn-danger btn-xs text-center " @click="deleteOutlet(row.item.id)"><i class="fa fa-trash"></i></button>
                     </template>
                 </b-table>
 

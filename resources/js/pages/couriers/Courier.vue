@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="panel">
             <div class="panel-heading">
-                <router-link :to="{ name: 'couriers.add' }" class="btn btn-primary btn-sm btn-flat"> Tambah</router-link>
+                <router-link :to="{ name: 'couriers.add' }" class="btn btn-microsoft btn-sm btn-flat"> Tambah</router-link>
                 <div class="pull-right">
                     <input type="text" class="form-control" placeholder="Cari..." v-model="search">
                 </div>
@@ -16,8 +16,8 @@
                         {{ row.item.outlet.name }}
                     </template>
                     <template slot="actions" slot-scope="row">
-                        <router-link :to="{ name: 'couriers.edit', params: {id: row.item.id} }" class="btn btn-warning btn-sm"> Edit</router-link>
-                        <button class="btn btn-danger btn-sm" @click="deleteCourier(row.item.id)"> Delete</button>
+                        <router-link :to="{ name: 'couriers.edit', params: {id: row.item.id} }" class="btn btn-microsoft btn-xs"> <i class="fa fa-pencil"></i></router-link>
+                        <button class="btn btn-danger btn-xs" @click="deleteCourier(row.item.id)"> <i class="fa fa-trash"></i></button>
                     </template>
                 </b-table>
 

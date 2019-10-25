@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="panel">
             <div class="panel-heading">
-                <router-link :to="{ name: 'expenses.create' }" class="btn btn-primary btn-sm btn-flat">Tambah</router-link>
+                <router-link :to="{ name: 'expenses.create' }" class="btn btn-microsoft btn-sm btn-flat">Tambah</router-link>
                 <div class="pull-right">
                     <input type="text" class="form-control" placeholder="Cari..." v-model="search">
                 </div>
@@ -21,9 +21,9 @@
                         {{ row.item.reason == '' ? '-':row.item.reason }}
                     </template>
                     <template slot="actions" slot-scope="row">
-                        <router-link :to="{ name: 'expenses.edit', params: {id: row.item.id} }" class="btn btn-warning btn-sm" v-if="row.item.status == 0"><i class="fa fa-pencil"></i></router-link>
-                        <router-link :to="{ name: 'expenses.view', params: {id: row.item.id} }" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></router-link>
-                        <button class="btn btn-danger btn-sm" @click="deleteExpenses(row.item.id)" v-if="row.item.status == 0"><i class="fa fa-trash"></i></button>
+                        <router-link :to="{ name: 'expenses.edit', params: {id: row.item.id} }" class="btn btn-microsoft btn-xs" v-if="row.item.status == 0"><i class="fa fa-pencil"></i></router-link>
+                        <router-link :to="{ name: 'expenses.view', params: {id: row.item.id} }" class="btn btn-vimeo btn-xs"><i class="fa fa-eye"></i></router-link>
+                        <button class="btn btn-danger btn-xs" @click="deleteExpenses(row.item.id)" v-if="row.item.status == 0"><i class="fa fa-trash"></i></button>
                     </template>
                 </b-table>
 

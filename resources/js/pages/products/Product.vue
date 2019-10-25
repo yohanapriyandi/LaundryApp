@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="panel">
             <div class="panel-heading">
-                <router-link :to="{ name: 'products.add' }" class="btn btn-primary btn-sm btn-flat"> Tambah</router-link>
+                <router-link :to="{ name: 'products.add' }" class="btn btn-microsoft btn-sm btn-flat"> Tambah</router-link>
                 <div class="pull-right">
                     <input type="text" class="form-control" placeholder="Cari..." v-model="search">
                 </div>
@@ -16,9 +16,12 @@
                     <template slot="user_id" slot-scope="row">
                         {{ row.item.user.name }}
                     </template>
+                    <template slot="service" slot-scope="row">
+                        {{ row.item.service }}  {{ row.item.service_type }}
+                    </template>
                     <template slot="actions" slot-scope="row">
-                        <router-link :to="{ name: 'products.edit', params: { id: row.item.id }}" class="btn btn-warning btn-sm btn-flat" > Edit</router-link>
-                        <button class="btn btn-danger btn-sm btn-flat" @click="deleteProduct(row.item.id)"> Delete</button>
+                        <router-link :to="{ name: 'products.edit', params: { id: row.item.id }}" class="btn btn-microsoft btn-xs btn-flat" > <i class="fa fa-pencil"></i> </router-link>
+                        <button class="btn btn-danger btn-xs btn-flat" @click="deleteProduct(row.item.id)"> <i class="fa fa-trash"></i></button>
                     </template>
                 </b-table>
 
@@ -59,6 +62,7 @@ export default {
                 {key: 'laundry_type', label: 'Jenis Jasa'},
                 {key: 'price', label: 'Harga'},
                 {key: 'user_id', label: 'Admin'},
+                {key: 'service', label: 'Lama Pengerjaan'},
                 {key: 'actions', label: 'Aksi'}
             ],
             search: ''
