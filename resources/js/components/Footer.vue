@@ -2,10 +2,9 @@
     <footer class="main-footer">
         <div class="container">
             <div class="pull-right hidden-xs">
-                <b>Version</b> 2.4.13
+                Made with <span class="fa fa-heart text-red"></span> From Kuningan, West Java, Indonesia.
             </div>
-            <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-            reserved.
+            <strong>Copyright &copy; 2019 .</strong> by <strong> <a href="https://laravel.com/">YCodeStudio</a> </strong> <span class="fa fa-flask text-red"></span>
         </div>
     <!-- /.container -->
   </footer>
