@@ -2,7 +2,7 @@
         <body class="login-page">
             <div class="login-box">
                 <div class="login-logo">
-                    <router-link :to="{ name: 'home' }"><b>YOHAN LAUNDRY</b></router-link>
+                    <router-link :to="{ name: 'home' }"><b>LARAWASH</b></router-link>
                 </div>
                 <div class="login-box-body">
                     <p class="login-box-msg">Sign in to start your session</p>
@@ -41,7 +41,7 @@
                             Login dengan Google
                         </a>
                     </div>                        
-                    <p><a href="">Lupa Password</a></p>                    
+                    <p><a href="">Lupa Password?</a></p>                    
                 </div>
             </div>
         </body>
