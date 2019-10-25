@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+
 import auth from './stores/auth.js'
 // IMPORT MODULE SECTION
 import outlet from './stores/outlet.js'
@@ -8,6 +9,9 @@ import product from './stores/product.js'
 import user from './stores/user.js'
 import expenses from './stores/expenses.js'
 import notification from './stores/notification.js'
+import customer from './stores/customer.js'
+import transaction from './stores/transaction.js'
+import dashboard from './stores/dashboard.js'
 
 
 
@@ -21,7 +25,10 @@ const store = new Vuex.Store({
         product,
         user,
         expenses,
-        notification
+        notification,
+        customer,
+        transaction, 
+        dashboard
     },
 
     state: {
